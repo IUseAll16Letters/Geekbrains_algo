@@ -2,3 +2,5 @@ Scripts/
 .idea/
 Lib
 pyvenv.cfg
+
+lesson_2/tasks.py
