@@ -5,3 +5,5 @@ pyvenv.cfg
 /lesson_1/tasks.py
 /lesson_2/tasks.py
 /lesson_3/tasks.py
+/spam
+lesson_4/__pycache__/
