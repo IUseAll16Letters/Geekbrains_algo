@@ -5,5 +5,7 @@ pyvenv.cfg
 /lesson_1/tasks.py
 /lesson_2/tasks.py
 /lesson_3/tasks.py
-/spam
+spam/*
+!*spam/queue_pract.py
+!*spam/linked_list_pract.py
 lesson_4/__pycache__/
