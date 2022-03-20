@@ -6,4 +6,5 @@ pyvenv.cfg
 /lesson_2/tasks.py
 /lesson_3/tasks.py
 /spam
+!spam/linked_list_pract.py
 lesson_4/__pycache__/
