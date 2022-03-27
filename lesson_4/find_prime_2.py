@@ -3,14 +3,13 @@
 import cProfile
 import time
 
-
 # Prime number theorem
-primes_rows = {4:      10,
-               25:     10 ** 2,
-               168:    10 ** 3,
-               1229:   10 ** 4,
-               9592:   10 ** 5,
-               78498:  10 ** 6,
+primes_rows = {4: 10,
+               25: 10 ** 2,
+               168: 10 ** 3,
+               1229: 10 ** 4,
+               9592: 10 ** 5,
+               78498: 10 ** 6,
                664579: 10 ** 7
                }
 
@@ -18,7 +17,7 @@ primes_rows = {4:      10,
 def find_prime(n: int) -> int:
     # defining the range of primes maximum value
     if n < 5:
-        return [2, 3, 5, 7][n-1]
+        return [2, 3, 5, 7][n - 1]
 
     for key in primes_rows.keys():
         if n <= key:
@@ -51,10 +50,10 @@ if __name__ == '__main__':
 
     cProfile.run('find_prime(100000)')
 
-#100    0.00025290000000000035
-#1000   0.0050412999999999986
-#10000  0.1840367
-#100000 5.2931602
+# 100    0.00025290000000000035
+# 1000   0.0050412999999999986
+# 10000  0.1840367
+# 100000 5.2931602
 
 
 # 6 function calls in 5.267 seconds
