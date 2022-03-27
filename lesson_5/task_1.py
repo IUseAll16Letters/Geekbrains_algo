@@ -22,7 +22,7 @@ for _ in range(companies_amnt):
         profit += income_quarters[quarter]
 
     overall_profit += profit
-    companies.append(Company(name=name, quart_profit=tuple(income_quarters), profit=profit))
+    companies.append(Company._make((name, tuple(income_quarters), profit)))
 
 avg_profit = overall_profit / companies_amnt
 
