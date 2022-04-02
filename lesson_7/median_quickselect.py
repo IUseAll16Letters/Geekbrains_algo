@@ -23,8 +23,8 @@ def quickselect(array, k):
     else:
         return quickselect(highs, k - len(lows) - len(pivots))
 
-
-for i in range(15):
-    list_1 = [random.randint(1, 250) for _ in range(random.randrange(11, 55, 2))]
-    search_item = (len(list_1) >> 1) + 1
-    print(sorted(list_1)[search_item] == quickselect(list_1, search_item))
+if __name__ == '__main__':
+    for i in range(15):
+        list_1 = [random.randint(1, 250) for _ in range(random.randrange(11, 55, 2))]
+        search_item = (len(list_1) >> 1) + 1
+        print(sorted(list_1)[search_item] == quickselect(list_1, search_item))
