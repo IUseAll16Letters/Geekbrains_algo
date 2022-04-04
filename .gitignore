@@ -8,4 +8,5 @@ pyvenv.cfg
 spam/*
 !*spam/queue_pract.py
 !*spam/linked_list_pract.py
+!*spam/tree_yoshi.py
 lesson_4/__pycache__/
