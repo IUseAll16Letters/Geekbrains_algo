@@ -42,7 +42,7 @@ def sieve_down(heap, i):
     end = len(heap)
     start = i
     newitem = heap[i]
-    childpos = (i >> 2) + 1
+    childpos = (i << 1) + 1
 
     while childpos < end:
         rightchild = childpos + 1
