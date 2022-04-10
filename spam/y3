@@ -1,0 +1,60 @@
+import random
+from time import time
+
+
+def read_file():
+    with open('input.txt', 'r', encoding='utf-8') as F:
+        volume = int(F.readline().split()[1])
+        array = tuple(map(int, F.readline().split()))
+    return volume, array
+
+
+def fnc(k, arr):
+    ar = sorted(arr)
+    print(arr)
+    print(ar)
+    d = {}
+    sum_left = 0                    # Sum before window start
+    sum_right = sum(ar[:k+1])       # Sum of the first window with item
+    left = 0                        # Most left side index
+    ln = len(ar) - 1                # Last idx of array
+
+    for idx, el in enumerate(ar):
+        sum_right -= el
+
+        sum_part = el*2*(idx - left)
+
+        d[el] = sum_part - sum_left + sum_right - k*el
+        print(f'\033[31mEL: {el:3} \033[0m| {sum_part:^4} - {sum_left} + {sum_right}, \033[33midx - left {idx - left}\033[0m')
+
+        while left < idx and ln > left+k:
+            print(f'hop, {el} ', end='; ')
+            k_calc = el*2*(idx - left - 1)
+            sm = k_calc - sum_left + sum_right + ar[left] + ar[left + k + 1] - k*el
+            if sm > d[el]:
+                break
+            print(f'\033[31mEL: {el:3} \033[0m| idx: {idx - left - 1} | {k_calc:^4} - {sum_left} + {ar[left]} + {sum_right} + {ar[left + k + 1]}')
+            d[el] = sm
+            sum_left -= ar[left]
+            left += 1
+            sum_right += ar[left + k]
+
+        sum_left += el
+
+    print(' '.join(str(d[el]) for el in arr))
+
+
+def main():
+    v, a = read_file()
+    fnc(v, a)
+
+    # start = time()
+    # infinity = 10 ** 9
+    # dist = random.randint(1, 5000-1)
+    # vals = tuple(random.randint(1, 30000) for z in range(222222))
+    # fnc(dist, vals)
+    # end = time()
+    # print(start - end)
+
+
+main()
