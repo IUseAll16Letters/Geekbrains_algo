@@ -10,3 +10,4 @@ spam/*
 !*spam/linked_list_pract.py
 !*spam/tree_yoshi.py
 lesson_4/__pycache__/
+lesson_6/__pycache__/
