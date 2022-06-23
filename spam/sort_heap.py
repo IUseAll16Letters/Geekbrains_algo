@@ -1,47 +1,40 @@
 from random import randint
 
 
-def max_heapify(lst: list, item: int, lim=0):
-    ln = lim or len(lst)
-    left, right = (item << 1) + 1, (item << 1) + 2
-    largest = item
-    if left < ln and lst[left] > lst[largest]:
-        largest = left
-    if right < ln and lst[right] > lst[largest]:
-        largest = right
-
-    if largest != item:
-        lst[item], lst[largest] = lst[largest], lst[item]
-        max_heapify(lst, largest, lim)
+def sift_up(heap, index, heapsize):
+    max_item_index = index
+    if (index * 2 + 1) < heapsize and heap[index * 2 + 1] > heap[max_item_index]:
+        max_item_index = index * 2 + 1
+    if (index * 2 + 2) < heapsize and heap[index * 2 + 2] > heap[max_item_index]:
+        max_item_index = index * 2 + 2
+    if max_item_index != index:
+        heap[index], heap[max_item_index] = heap[max_item_index], heap[index]
+        sift_up(heap, max_item_index, heapsize)
 
 
-def build_max_heap(lst: list):
-    ln = len(lst)
-    for i in reversed(range((ln >> 1) + 1)):
-        max_heapify(lst, i)
+def heapify(array, heapsize=None):
+    if heapsize is None:
+        heapsize = len(array) - 1
+
+    for i in range((len(array) - 2) >> 1, -1, -1):
+        sift_up(array, i, heapsize)
 
 
-def heap_sort(lst: list):
-    build_max_heap(lst)
-    heap_size = len(lst)
-    for idx in reversed(range(heap_size)):
-      heap_size -= 1
-      if heap_size == 0:
-            return ''
-      lst[0], lst[idx] = lst[idx], lst[0]
-      max_heapify(lst, 0, heap_size)
+def heap_sort(heap):
+    heapify(heap)
+    for i in range(len(heap) - 1, 0, -1):
+        heap[0], heap[i] = heap[i], heap[0]
+        sift_up(heap, 0, i)
 
 
 def main():
-    for _ in range(10000):
-        arr = [randint(1, 5000) for z in range(500)]
-        _arr = arr.copy()
-        heap_sort(arr)
-        if sorted(_arr) != arr:
-            print('LIAR')
+    for _ in range(5000):
+        array = [randint(1, 5000) for __ in range(1500)]
+        heap_sort(array)
+        for idx, item in enumerate(array[1:], 1):
+            if array[idx - 1] > item:
+                print('\033[31mLIAR\033[0m', array[idx], item, idx)
 
 
 if __name__ == '__main__':
     main()
-    
-    
